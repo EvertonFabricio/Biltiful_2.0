@@ -11,204 +11,7 @@ namespace Biltiful_2._0
 
     public class MenuCadastros
     {
-        public class Cliente
-        {
-            public string CPF { get; private set; }
-            public string Nome { get; set; }
-            public DateTime DataNascimento { get; set; }
-            public char Sexo { get; set; }
-            public DateTime UltimaVenda { get; set; }
-            public DateTime DataCadastro { get; set; }
-            public char Situacao { get; set; }
 
-            public Cliente()
-            {
-
-            } //construtor vazio pra chamar ele sem ter que passar parametros
-
-            public Cliente(string cpf, string name, DateTime dataNascimento, char sexo, char situacao) //Construtor com os dados que tem que informar pra cadastrar
-            {
-                CPF = cpf;
-                Nome = name;
-                DataNascimento = dataNascimento;
-                Sexo = sexo;
-                UltimaVenda = DateTime.Now;
-                DataCadastro = DateTime.Now;
-                Situacao = situacao;
-            }
-            public Cliente(string cpf, string name, DateTime dataNascimento, char sexo, DateTime UltimaCompra, DateTime dataCadastro, char situacao) //construtor criado só pra ocupar espaço no codigo, pq nao usa pra nada.
-            {
-                CPF = cpf;
-                Nome = name;
-                DataNascimento = dataNascimento;
-                Sexo = sexo;
-                UltimaVenda = UltimaCompra;
-                DataCadastro = dataCadastro;
-                Situacao = situacao;
-            }
-
-
-
-
-
-
-
-
-
-            //            Console.Write("CPF: ");
-            //            string cpf = Console.ReadLine();
-
-            //            cliente = read.ProcuraCliente(cpf);
-            //            if (cliente != null)
-            //            {
-            //                Console.WriteLine("Nome: ");
-            //                string nome = Console.ReadLine().Trim().PadLeft(50, ' ');
-            //                Console.WriteLine("Data de nascimento: ");
-            //                bool flag = DateTime.TryParse(Console.ReadLine(), out DateTime dNascimento);
-            //                Console.WriteLine("Situacao [A - Ativo/I - Inativo]: ");
-            //                bool flagSituacao = char.TryParse(Console.ReadLine().Trim().ToUpper(), out char situacao);
-
-            //                cliente.Nome = nome == "" ? cliente.Nome : nome;
-            //                cliente.DataNascimento = flag == false ? cliente.DataCadastro : dNascimento;
-            //                cliente.Situacao = flagSituacao == false ? cliente.Situacao : situacao;
-
-            //                write.EditarCliente(cliente);
-
-            //                Console.WriteLine("Cliente Cadastrado com sucesso");
-            //                Console.WriteLine("Pressione enter para continuar...");
-            //                Console.ReadKey();
-            //            }
-            //            return cliente;
-            //        }
-            //        public string RetornaArquivo()
-            //        {
-            //            return $"{CPF}{Nome}{DataNascimento.ToString("dd/MM/yyyy")}{Sexo}{UltimaVenda.ToString("dd/MM/yyyy")}{DataCadastro.ToString("dd/MM/yyyy")}{Situacao}";
-
-            //        }
-
-
-
-
-
-
-
-            //        public void Navegar()
-            //        {
-            //            Console.WriteLine("============== Cliente ==============");
-            //            bool verificaArquivo = read.VerificaListaCliente();
-            //            if (verificaArquivo == true)
-            //            {
-            //                List<Cliente> lista = read.ListaArquivoCliente();
-            //                int opcao = 0, posicao = 0;
-            //                bool flag = false;
-            //                do
-            //                {
-            //                    Console.Clear();
-            //                    Console.WriteLine("============== Cliente ==============");
-
-            //                    if (opcao == 0)
-            //                    {
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 1)
-            //                    {
-            //                        if (posicao == lista.Count - 1)
-            //                            posicao = lista.Count - 1;
-            //                        else
-            //                            posicao++;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 2)
-            //                    {
-            //                        if (posicao == 0)
-            //                            posicao = 0;
-            //                        else
-            //                            posicao--;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 3)
-            //                    {
-            //                        posicao = 0;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 4)
-            //                    {
-            //                        posicao = lista.Count - 1;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    Console.WriteLine(@"
-            //1. Proximo 
-            //2. Anterior
-            //3. Primeiro
-            //4. Ultimo
-            //0. Voltar para menu anterior.
-            //");
-            //                    do
-            //                    {
-            //                        flag = int.TryParse(Console.ReadLine(), out opcao);
-            //                    } while (flag != true);
-
-            //                } while (opcao != 0);
-
-            //            }
-            //            else
-            //            {
-            //                Console.Clear();
-            //                Console.WriteLine("Ainda nao tem nenhum cliente cadastrado");
-            //                Console.WriteLine("Pressione enter para continuar...");
-            //                Console.ReadKey();
-            //            }
-            //        }
-
-
-
-
-
-            //        public void Localizar()
-            //        {
-            //            Console.WriteLine("Insira o cpf para localizar: ");
-            //            string cpf = Console.ReadLine();
-
-            //            Cliente cliente = read.ProcuraCliente(cpf);
-
-            //            if (cliente != null)
-            //            {
-            //                Console.WriteLine(cliente.ToString());
-
-            //            }
-            //            else
-            //                Console.WriteLine("Nenhum cadastrado foi encontrado!");
-            //            Console.WriteLine("Pressione enter para continuar...");
-            //            Console.ReadKey();
-            //        }
-
-
-
-
-            //        public void ClientesBloqueados()
-            //        {
-            //            Console.WriteLine("Insira o CPF para pesquisa: ");
-            //            string cpf = Console.ReadLine();
-            //            bool flag = new Read().ProcurarCPFBloqueado(cpf);
-
-            //            if (flag)
-            //            {
-            //                Cliente cliente = new Read().ProcuraCliente(cpf);
-            //                Console.WriteLine(cliente.ToString());
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Cliente bloqueado nao encontrado");
-            //            }
-            //            Console.WriteLine("Pressione enter para continuar...");
-            //            Console.ReadKey();
-            //        }
-            public override string ToString()
-            {
-                return $"CPF: {CPF}\nNome: {Nome.Trim()}\nData de nascimento: {DataNascimento.ToString("dd/MM/yyyy")}\nSexo: {Sexo}\nUltima Compra: {UltimaVenda.ToString("dd/MM/yyyy")}\nDia de Cadastro: {DataCadastro.ToString("dd/MM/yyyy")}\nSituacao: {Situacao}";
-            }
-
-        }
         public static void SubMenuClientes()
         {
             string escolha;
@@ -349,73 +152,82 @@ namespace Biltiful_2._0
         }
         public static void ListarClientes()
         {
-            List<string> list = new List<string>();
-
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+
+                List<string> list = new List<string>();
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
                         {
-                            list.Add($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                            while (Ler.Read())
+                            {
+                                list.Add($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                            }
+                            cnn.Close();
+                            list.Sort();
+                            int i = 0;
+                            string opcao;
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine(list[i]);
+                                Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
+                                opcao = Console.ReadLine();
+                                switch (opcao)
+                                {
+                                    case "1":
+                                        if (i == list.Count() - 1)
+                                            i = list.Count() - 1;
+                                        else
+                                            i++;
+                                        break;
+
+                                    case "2":
+                                        if (i == 0)
+                                            i = 0;
+                                        else
+                                            i--;
+                                        break;
+
+                                    case "3":
+                                        i = 0;
+                                        break;
+
+                                    case "4":
+                                        i = list.Count() - 1;
+                                        break;
+
+                                    case "0":
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                            while (opcao != "0");
                         }
-                        cnn.Close();
-                        list.Sort();
-                        int i = 0;
-                        string opcao;
-                        do
+                        else
                         {
                             Console.Clear();
-                            Console.WriteLine(list[i]);
-                            Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
-                            opcao = Console.ReadLine();
-                            switch (opcao)
-                            {
-                                case "1":
-                                    if (i == list.Count() - 1)
-                                        i = list.Count() - 1;
-                                    else
-                                        i++;
-                                    break;
-
-                                case "2":
-                                    if (i == 0)
-                                        i = 0;
-                                    else
-                                        i--;
-                                    break;
-
-                                case "3":
-                                    i = 0;
-                                    break;
-
-                                case "4":
-                                    i = list.Count() - 1;
-                                    break;
-
-                                case "0":
-                                    break;
-
-                                default:
-                                    break;
-                            }
+                            Console.WriteLine($"Não existem clientes cadastrados.");
+                            Console.ReadKey();
                         }
-                        while (opcao != "0");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"Não existem clientes cadastrados.");
-                        Console.ReadKey();
                     }
                 }
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
             }
         }
         public static void BloqueiaCliente()
@@ -560,288 +372,103 @@ namespace Biltiful_2._0
         }
         public static void LocalizaCliente()
         {
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            Console.WriteLine("Digite o nome OU o CPF do cliente que deseja buscar:");
-            var Busca = Console.ReadLine();
-
-            string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+
+                Console.WriteLine("Digite o nome OU o CPF do cliente que deseja buscar:");
+                var Busca = Console.ReadLine();
+
+                cnn.Open();
+                string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
+                        {
+                            while (Ler.Read())
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Cliente encontrado: \n");
+                                Console.WriteLine($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                                Console.WriteLine("Pressione ENTER para continuar...");
+                                Console.ReadKey();
+                            }
+                        }
+                        else
                         {
                             Console.Clear();
-                            Console.WriteLine("Cliente encontrado: \n");
-                            Console.WriteLine($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
-                            Console.WriteLine("Pressione ENTER para continuar...");
+                            Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
                             Console.ReadKey();
                         }
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
-                        Console.ReadKey();
-                    }
                 }
+                cnn.Close();
+
             }
-            cnn.Close();
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
         }
         public static void LocalizaClienteBloqueado()
         {
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            Console.WriteLine("Digite o nome OU o CPF do cliente que deseja saber a situação:");
-            var Busca = Console.ReadLine();
-
-            string Select = $"SELECT Nome, CPF, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                Console.WriteLine("Digite o nome OU o CPF do cliente que deseja saber a situação:");
+                var Busca = Console.ReadLine();
+
+                string Select = $"SELECT Nome, CPF, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
                         {
-                            Console.Clear();
-                            if (Ler.GetString(2) == "I")
+                            while (Ler.Read())
                             {
                                 Console.Clear();
-                                Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se BLOQUEADO\nPressione ENTER para voltar...");
-                                Console.ReadKey();
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se DESBLOQUEADO\nPressione ENTER para voltar...");
-                                Console.ReadKey();
+                                if (Ler.GetString(2) == "I")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se BLOQUEADO\nPressione ENTER para voltar...");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se DESBLOQUEADO\nPressione ENTER para voltar...");
+                                    Console.ReadKey();
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
-                        Console.ReadKey();
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
+                            Console.ReadKey();
+                        }
                     }
                 }
-            }
-            cnn.Close();
-        }
-       
-
-
-        public class Fornecedor
-        {
-            public string CNPJ { get; set; }
-            public string RazaoSocial { get; set; }
-            public DateTime DataAbertura { get; set; }
-            public DateTime UltimaCompra { get; set; }
-            public DateTime DataCadastro { get; set; }
-            public char Situacao { get; set; }
-
-            public Fornecedor()
-            {
+                cnn.Close();
 
             }
-            public Fornecedor(string cnpj, string rSocial, DateTime dAbertura, char situacao)
+            catch (SqlException erro)
             {
-                CNPJ = cnpj;
-                RazaoSocial = rSocial;
-                DataAbertura = dAbertura;
-                UltimaCompra = DateTime.Now;
-                DataCadastro = DateTime.Now;
-                Situacao = situacao;
-            }
-            public Fornecedor(string cnpj, string rSocial, DateTime dAbertura, DateTime uCompra, DateTime dCadastro, char situacao) //construtor criado só pra ocupar espaço no codigo, pq nao usa pra nada.
-            {
-                CNPJ = cnpj;
-                RazaoSocial = rSocial;
-                DataAbertura = dAbertura;
-                UltimaCompra = DateTime.Now;
-                DataCadastro = DateTime.Now;
-                Situacao = situacao;
-            }
-            //        public void Navegar()
-            //        {
-            //            Console.WriteLine("============== Fornecedores ==============");
-            //            bool verificaArquivo = read.VerificaListaFornecedor();
-            //            if (verificaArquivo == true)
-            //            {
-            //                List<Fornecedor> lista = read.ListaArquivoFornecedor();
-            //                int opcao = 0, posicao = 0;
-            //                bool flag = false;
-            //                do
-            //                {
-            //                    Console.Clear();
-            //                    Console.WriteLine("============== Fornecedores ==============");
-
-            //                    if (opcao == 0)
-            //                    {
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 1)
-            //                    {
-            //                        if (posicao != lista.Count - 1)
-            //                            posicao++;
-
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 2)
-            //                    {
-            //                        if (posicao != 0)
-            //                            posicao--;
-
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 3)
-            //                    {
-            //                        posicao = 0;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-            //                    else if (opcao == 4)
-            //                    {
-            //                        posicao = lista.Count - 1;
-            //                        Console.WriteLine(lista[posicao].ToString());
-            //                    }
-
-            //                    Console.WriteLine(@"
-            //1. Proximo 
-            //2. Anterior
-            //3. Primeiro
-            //4. Ultimo
-            //0. Voltar para menu anterior.
-            //");
-            //                    do
-            //                    {
-            //                        flag = int.TryParse(Console.ReadLine(), out opcao);
-            //                    } while (flag != true);
-
-            //                } while (opcao != 0);
-
-            //            }
-            //            else
-            //            {
-            //                Console.Clear();
-            //                Console.WriteLine("Ainda nao tem nenhum fornecedor cadastrado");
-            //                Console.WriteLine("Pressione enter para continuar");
-            //                Console.ReadKey();
-            //            }
-            //        }
-            //        public void Localizar()
-            //        {
-            //            Console.WriteLine("Insira o CNPJ para localizar: ");
-            //            string cnpj = Console.ReadLine();
-
-            //            Fornecedor fornecedor = read.ProcurarFornecedor(cnpj);
-
-            //            if (fornecedor != null)
-            //            {
-            //                Console.WriteLine(fornecedor.ToString());
-            //            }
-            //            else
-            //                Console.WriteLine("Nenhum cadastrado foi encontrado!");
-            //            Console.WriteLine("Pressione enter para voltar ao menu.");
-            //            Console.ReadKey();
-            //        }
-            //        public void BloqueiaFornecedor()
-            //        {
-            //            Fornecedor fornecedor;
-            //            Console.WriteLine("Insira o CNPJ para bloqueio: ");
-            //            string cnpj = Console.ReadLine();
-            //            cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
-
-            //            if (read.ProcurarCNPJBloqueado(cnpj))
-            //            {
-            //                bool flag = false;
-            //                int opcao;
-            //                Console.WriteLine("Fornecedor ja esta bloqueado");
-            //                Console.WriteLine("Deseja desbloqueado ? [1 - Sim/ 2 - Nao]");
-
-            //                do
-            //                {
-            //                    flag = int.TryParse(Console.ReadLine(), out opcao);
-            //                } while (flag != true);
-
-            //                if (opcao == 1)
-            //                {
-            //                    new Write().DesbloqueiaFornecedor(cnpj);
-            //                }
-            //            }
-            //            else
-            //            {
-            //                if (Validacoes.ValidarCnpj(cnpj))
-            //                {
-            //                    fornecedor = read.ProcurarFornecedor(cnpj);
-            //                    if (fornecedor != null)
-            //                    {
-            //                        write.BloquearFornecedor(fornecedor.CNPJ);
-            //                        Console.WriteLine("CNPJ bloqueado!");
-            //                    }
-            //                }
-            //                else
-            //                    Console.WriteLine("CNPJ incorreto!");
-            //            }
-            //        }
-            //        public string RetornaArquivo()
-            //        {
-            //            return CNPJ + RazaoSocial + DataAbertura.ToString("dd/MM/yyyy") + UltimaCompra.ToString("dd/MM/yyyy") + DataCadastro.ToString("dd/MM/yyyy") + Situacao;
-            //        }
-            //        public Fornecedor Editar()
-            //        {
-            //            Fornecedor fornecedor;
-            //            Console.WriteLine("Somente algumas informacoes podem ser alterada como (Razao social/situacao), caso nao queira alterar alguma informacao pressione enter!");
-            //            Console.Write("CNPJ: ");
-            //            string cnpj = Console.ReadLine();
-
-            //            fornecedor = read.ProcurarFornecedor(cnpj);
-            //            if (fornecedor != null)
-            //            {
-            //                Console.WriteLine("Razao social: ");
-            //                string nome = Console.ReadLine().Trim().PadLeft(50, ' ');
-            //                Console.WriteLine("Situacao [A - Ativo/ I - inativo]: ");
-            //                bool flagSituacao = char.TryParse(Console.ReadLine().ToString().ToUpper(), out char situacao);
-
-            //                fornecedor.RazaoSocial = nome == "" ? fornecedor.RazaoSocial : nome;
-
-            //                fornecedor.Situacao = flagSituacao == false ? fornecedor.Situacao : situacao;
-
-            //                write.EditarFornecedor(fornecedor);
-            //            }
-            //            return fornecedor;
-            //        }
-            //        public void FornecedorBloqueado()
-            //        {
-            //            Console.WriteLine("Insira o CNPJ para pesquisa: ");
-            //            string cnpj = Console.ReadLine();
-            //            bool flag = new Read().ProcurarCNPJBloqueado(cnpj);
-
-            //            if (flag)
-            //            {
-            //                Fornecedor fornecedor = new Read().ProcurarFornecedor(cnpj);
-            //                Console.WriteLine(fornecedor.ToString());
-            //                Console.ReadKey();
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Fornecedor bloqueado nao encontrado");
-            //                Console.ReadKey();
-            //            }
-
-            //        }
-            public override string ToString()
-            {
-                return $"CNPJ: {CNPJ}\nRSocial: {RazaoSocial.Trim()}\nData de Abertura da empresa: {DataAbertura.ToString("dd/MM/yyyy")}\nUltima Compra: {UltimaCompra.ToString("dd/MM/yyyy")}\nData de Cadastro: {DataCadastro.ToString("dd/MM/yyyy")}\nSituacao: {Situacao}";
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
             }
         }
+
+
         public static void SubMenuFornecedores()
         {
             string escolha;
@@ -863,8 +490,6 @@ namespace Biltiful_2._0
 
                 switch (escolha = Console.ReadLine())
                 {
-                    case "0":
-                        break;
 
                     case "1":
                         NovoFornecedor();
@@ -888,6 +513,9 @@ namespace Biltiful_2._0
 
                     case "6":
                         LocalizaFornecedorBloqueado();
+                        break;
+
+                    case "0":
                         break;
 
                     default:
@@ -970,73 +598,82 @@ namespace Biltiful_2._0
         }
         public static void ListarFornecedores()
         {
-            List<string> list = new List<string>();
-
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+
+                List<string> list = new List<string>();
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
                         {
-                            list.Add($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
+                            while (Ler.Read())
+                            {
+                                list.Add($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
+                            }
+                            cnn.Close();
+                            list.Sort();
+                            int i = 0;
+                            string opcao;
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine(list[i]);
+                                Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
+                                opcao = Console.ReadLine();
+                                switch (opcao)
+                                {
+                                    case "1":
+                                        if (i == list.Count() - 1)
+                                            i = list.Count() - 1;
+                                        else
+                                            i++;
+                                        break;
+
+                                    case "2":
+                                        if (i == 0)
+                                            i = 0;
+                                        else
+                                            i--;
+                                        break;
+
+                                    case "3":
+                                        i = 0;
+                                        break;
+
+                                    case "4":
+                                        i = list.Count() - 1;
+                                        break;
+
+                                    case "0":
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                            while (opcao != "0");
                         }
-                        cnn.Close();
-                        list.Sort();
-                        int i = 0;
-                        string opcao;
-                        do
+                        else
                         {
                             Console.Clear();
-                            Console.WriteLine(list[i]);
-                            Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
-                            opcao = Console.ReadLine();
-                            switch (opcao)
-                            {
-                                case "1":
-                                    if (i == list.Count() - 1)
-                                        i = list.Count() - 1;
-                                    else
-                                        i++;
-                                    break;
-
-                                case "2":
-                                    if (i == 0)
-                                        i = 0;
-                                    else
-                                        i--;
-                                    break;
-
-                                case "3":
-                                    i = 0;
-                                    break;
-
-                                case "4":
-                                    i = list.Count() - 1;
-                                    break;
-
-                                case "0":
-                                    break;
-
-                                default:
-                                    break;
-                            }
+                            Console.WriteLine($"Não existem Fornecedores cadastrados.");
+                            Console.ReadKey();
                         }
-                        while (opcao != "0");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"Não existem Fornecedores cadastrados.");
-                        Console.ReadKey();
                     }
                 }
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
             }
         }
         public static void BloqueiaFornecedor()
@@ -1162,687 +799,370 @@ namespace Biltiful_2._0
         }
         public static void LocalizaFornecedor()
         {
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja buscar:");
-            var Busca = Console.ReadLine();
-
-            string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+
+                Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja buscar:");
+                var Busca = Console.ReadLine();
+
+                cnn.Open();
+                string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
+                        {
+                            while (Ler.Read())
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Empresa encontrado: \n");
+                                Console.WriteLine($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
+                                Console.WriteLine("Pressione ENTER para continuar...");
+                                Console.ReadKey();
+                            }
+                        }
+                        else
                         {
                             Console.Clear();
-                            Console.WriteLine("Empresa encontrado: \n");
-                            Console.WriteLine($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
-                            Console.WriteLine("Pressione ENTER para continuar...");
+                            Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
                             Console.ReadKey();
                         }
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
-                        Console.ReadKey();
-                    }
                 }
+                cnn.Close();
             }
-            cnn.Close();
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
         }
         public static void LocalizaFornecedorBloqueado()
         {
-            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
-            SqlConnection cnn = new SqlConnection(connetionString);
-            cnn.Open();
-
-            Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja saber a situação:");
-            var Busca = Console.ReadLine();
-
-            string Select = $"Select RazaoSocial, CNPJ, Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
-            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            try
             {
-                using (SqlDataReader Ler = comando.ExecuteReader())
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja saber a situação:");
+                var Busca = Console.ReadLine();
+
+                string Select = $"Select RazaoSocial, CNPJ, Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
                 {
-                    if (Ler.HasRows == true)
+                    using (SqlDataReader Ler = comando.ExecuteReader())
                     {
-                        while (Ler.Read())
+                        if (Ler.HasRows == true)
                         {
-                            if (Ler.GetString(2) == "I")
+                            while (Ler.Read())
                             {
-                                Console.Clear();
-                                Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se BLOQUEADA.\nPressione ENTER para voltar...");
-                                Console.ReadKey();
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se DESBLOQUEADA.\nPressione ENTER para voltar...");
-                                Console.ReadKey();
+                                if (Ler.GetString(2) == "I")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se BLOQUEADA.\nPressione ENTER para voltar...");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se DESBLOQUEADA.\nPressione ENTER para voltar...");
+                                    Console.ReadKey();
+                                }
                             }
                         }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
+                            Console.ReadKey();
+                        }
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
+                }
+                cnn.Close();
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
+        }
+
+
+
+        public static void SubMenuMateriaPrima()
+        {
+            string escolha;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n=============== MATÉRIA-PRIMA ===============");
+                Console.WriteLine("1. Cadastrar Matéria-Prima");
+                Console.WriteLine("2. Localizar Matéria-Prima");
+                Console.WriteLine("3. Imprimir Matérias-Primas");
+                Console.WriteLine("4. Alterar Situação da Matéria-Prima");
+                Console.WriteLine("---------------------------------------------");
+                Console.WriteLine("0. Voltar ao menu anterior");
+                Console.Write("\nEscolha: ");
+
+                switch (escolha = Console.ReadLine())
+                {
+                    case "1":
+                        CadastrarMP();
+                        break;
+                    case "2":
+                        LocalizaMP();
+                        break;
+                    case "3":
+                        // ImprimirMP();
+                        break;
+                    case "4":
+                        // AlterarSituacaoMP();
+                        break;
+                    case "0":
+                        break;
+
+                    default:
+                        Console.WriteLine("\n Opção inválida.");
+                        Console.WriteLine("\n Pressione ENTER para voltar ao menu.");
                         Console.ReadKey();
+                        break;
+                }
+            } while (escolha != "0");
+        }
+
+        public static void CadastrarMP()
+        {
+            Console.Clear();
+            Console.WriteLine("\n Cadastro de Materia-Prima\n");
+            Console.Write(" Nome: ");
+            var nome = Console.ReadLine();
+            char situacao;
+            do
+            {
+                Console.Write(" Situacao (A - Ativo / I - Inativo): ");
+                situacao = char.Parse(Console.ReadLine().ToUpper());
+
+                if (situacao != 'A' && situacao != 'I')
+                    Console.WriteLine(" Situacao invalida.");
+
+            } while (situacao != 'A' && situacao != 'I');
+
+         
+
+            int cont = ContarLinhaMP()+1; 
+            string id = $"MP{cont.ToString().PadLeft(4, '0')}";
+
+            try
+            {
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                using (cnn)
+                {
+                    cnn.Open();
+                    SqlCommand sql_cmnd = new SqlCommand("IncluiMP", cnn);
+
+                    sql_cmnd.CommandType = CommandType.StoredProcedure;
+
+                    sql_cmnd.Parameters.AddWithValue("@Id", SqlDbType.VarChar).Value = id;
+                    sql_cmnd.Parameters.AddWithValue("@Nome", SqlDbType.VarChar).Value = nome;
+                    sql_cmnd.Parameters.AddWithValue("@Situacao", SqlDbType.Char).Value = situacao;
+
+                    sql_cmnd.ExecuteNonQuery();
+                    cnn.Close();
+                    Console.WriteLine("Materia Prima incluida no banco de dados.");
+                    Console.WriteLine("Pressione ENTER para voltar ao menu...");
+                    Console.ReadKey();
+                }
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
+        }
+        public static int ContarLinhaMP()
+        {
+
+            int cont = 0;
+            try
+            {
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                cnn.Open();
+
+                string Select = $"Select Id From dbo.MateriaPrima";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
+                {
+                    using (SqlDataReader Ler = comando.ExecuteReader())
+                    {
+                       
+                            while (Ler.Read())
+                            {
+                                cont++;
+                            }
+                            cnn.Close();
+                       
                     }
                 }
             }
-            cnn.Close();
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
+            return cont;
         }
+        public static void LocalizaMP()
+        {
+            try
+            {
+
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+
+                Console.WriteLine("Digite o ID ou o Nome da Materia Prima que deseja buscar:");
+                var Busca = Console.ReadLine();
+
+                cnn.Open();
+                string Select = $"select Id, Nome, format(DataCadastro,'dd/MM/yyyy'), format(UltimaCompra,'dd/MM/yyyy'), Situacao From dbo.MateriaPrima WHERE Id like '%{Busca}%' OR Nome like '%{Busca}%'";
+                using (SqlCommand comando = new SqlCommand(Select, cnn))
+                {
+                    using (SqlDataReader Ler = comando.ExecuteReader())
+                    {
+                        if (Ler.HasRows == true)
+                        {
+                            while (Ler.Read())
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Resultado Encontrado: \n");
+                                Console.WriteLine($"ID: {Ler.GetString(0)}\nMateria Prima: {Ler.GetString(1)}\nCadastrada em: {Ler.GetString(2)}\nUltima Compra em: {Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                                Console.WriteLine("Pressione ENTER para continuar...");
+                                Console.ReadKey();
+                            }
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
+                            Console.ReadKey();
+                        }
+                    }
+                }
+                cnn.Close();
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
+        }
+
+        
+
+        //public void AlterarSituacao()
+        //{
+        //    string cod, mPrima, situacao;
+        //    bool flag = true;
+
+        //    Console.Clear();
+        //    Console.WriteLine("\n Alterar Materia-prima");
+        //    Console.Write("\n Digite o codigo da materia-prima: ");
+        //    cod = Console.ReadLine();
+
+        //    mPrima = Buscar(cod);
+
+        //    if (mPrima == null)
+        //    {
+        //        Console.WriteLine("\n A materia-prima nao existe.");
+        //        Console.WriteLine("\n Pressione ENTER para voltar ao menu");
+        //        Console.ReadKey();
+        //    }
+        //    else
+        //    {
+        //        situacao = mPrima.Substring(42, 1);
+        //        if (situacao == "A")
+        //            situacao = "Ativo";
+        //        else if (situacao == "I")
+        //            situacao = "Inativo";
+
+        //        Console.WriteLine("\n A materia-prima foi encontrada.\n");
+        //        Console.WriteLine($" Codigo: {mPrima.Substring(0, 6)}");
+        //        Console.WriteLine($" Nome: {mPrima.Substring(6, 20)}");
+        //        Console.WriteLine($" Data ultima compra: {mPrima.Substring(26, 8).Insert(2, "/").Insert(5, "/")}");
+        //        Console.WriteLine($" Data do cadastro: {mPrima.Substring(34, 8).Insert(2, "/").Insert(5, "/")}");
+        //        Console.WriteLine($" Situacao: {situacao}");
+
+        //        do
+        //        {
+        //            Console.Write("\n Qual a nova situacao da materia-prima (A / I): ");
+        //            situacao = Console.ReadLine().ToUpper();
+
+        //            if ((situacao != "A") && (situacao != "I"))
+        //            {
+        //                Console.WriteLine("\n Situacao invalida.");
+        //                Console.WriteLine("\n Pressione ENTER para voltar ao cadastro.");
+        //                Console.ReadKey();
+        //            }
+        //            else
+        //            {
+        //                flag = false;
+        //            }
+
+        //        } while (flag);
+
+        //        Atualizar(cod, null, situacao);
+        //    }
+        //}
+
+        //public void Atualizar(string cod, string dataUltimaCompra = null, string situacaoAtualizada = null)
+        //{
+
+
+        //}
+
+        //public string Impressao(MPrima mPrima)
+        //{
+        //    string situacao = "";
+        //    if (mPrima.Situacao == 'A')
+        //        situacao = "Ativo";
+        //    else if (mPrima.Situacao == 'I')
+        //        situacao = "Inativo";
+
+        //    return "\n"
+        //        + "\n Codigo: \t" + mPrima.Id
+        //        + "\n Nome: \t" + mPrima.Nome
+        //        + "\n Ultima Venda: \t" + mPrima.UltimaCompra.ToString("dd/MM/yyyy")
+        //        + "\n Data Cadastro: " + mPrima.DataCadastro.ToString("dd/MM/yyyy")
+        //        + "\n Situacao: \t" + situacao
+        //        + "\n";
+        //}
+
+        //public void ImprimirMPrimas()
+        //{
+
+
+
+        //}
+
+
     }
 
 
 
 
 
-    //public class MPrima
-    //{
-    //    public string Id { get; set; }
-    //    public string Nome { get; set; }
-    //    public DateTime UltimaCompra { get; set; }
-    //    public DateTime DataCadastro { get; set; }
-    //    public char Situacao { get; set; }
 
-    //    public MPrima()
-    //    {
 
-    //    }
 
-    //    public MPrima(string id, string nome, DateTime uCompra, DateTime dCadastro, char situacao)
-    //    {
-    //        Id = id;
-    //        Nome = nome;
-    //        UltimaCompra = uCompra;
-    //        DataCadastro = dCadastro;
-    //        Situacao = situacao;
-    //    }
 
-    //    public override string ToString()
-    //    {
-    //        return Id
-    //            + Nome.PadLeft(20, ' ')
-    //            + UltimaCompra.ToString("dd/MM/yyyy").Replace("/", "")
-    //            + DataCadastro.ToString("dd/MM/yyyy").Replace("/", "")
-    //            + Situacao;
-    //    }
 
-    //    public void Menu()
-    //    {
-    //        string escolha;
-
-    //        do
-    //        {
-    //            Console.Clear();
-    //            Console.WriteLine("\n=============== MATÉRIA-PRIMA ===============");
-    //            Console.WriteLine("1. Cadastrar Matéria-Prima");
-    //            Console.WriteLine("2. Localizar Matéria-Prima");
-    //            Console.WriteLine("3. Imprimir Matérias-Primas");
-    //            Console.WriteLine("4. Alterar Situação da Matéria-Prima");
-    //            Console.WriteLine("---------------------------------------------");
-    //            Console.WriteLine("0. Voltar ao menu anterior");
-    //            Console.Write("\nEscolha: ");
-
-    //            switch (escolha = Console.ReadLine())
-    //            {
-    //                case "0":
-    //                    break;
-    //                case "1":
-    //                    Cadastrar();
-    //                    break;
-    //                case "2":
-    //                    Localizar();
-    //                    break;
-    //                case "3":
-    //                    ImprimirMPrimas();
-    //                    break;
-    //                case "4":
-    //                    AlterarSituacao();
-    //                    break;
-
-    //                default:
-    //                    Console.WriteLine("\n Opção inválida.");
-    //                    Console.WriteLine("\n Pressione ENTER para voltar ao menu.");
-    //                    Console.ReadKey();
-    //                    break;
-    //            }
-
-    //        } while (escolha != "0");
-    //    }
-
-    //    public void Cadastrar()
-    //    {
-    //        MPrima MPrima = new MPrima();
-
-    //        char sit = 'A';
-    //        string nomeTemp;
-    //        bool flag = true;
-
-    //        do
-    //        {
-    //            Console.Clear();
-    //            Console.WriteLine("\n Cadastro de Materia-prima\n");
-    //            Console.Write(" Nome: ");
-    //            nomeTemp = Console.ReadLine();
-    //            Console.Write(" Situacao (A / I): ");
-    //            sit = char.Parse(Console.ReadLine().ToUpper());
-
-    //            if (nomeTemp == null)
-    //            {
-    //                Console.WriteLine(" Nenhum campo podera ser vazio.");
-    //                Console.WriteLine(" Pressione ENTER para voltar ao cadastro.");
-    //                Console.ReadKey();
-    //            }
-    //            else
-    //            {
-    //                if (nomeTemp.Length > 20)
-    //                {
-    //                    Console.WriteLine(" Nome invalido. Digite apenas 20 caracteres.");
-    //                    Console.WriteLine(" Pressione ENTER para voltar ao cadastro.");
-    //                    Console.ReadKey();
-    //                }
-    //                else if ((sit != 'A') && (sit != 'I'))
-    //                {
-    //                    Console.WriteLine(" Situacao invalida.");
-    //                    Console.WriteLine(" Pressione ENTER para voltar ao cadastro.");
-    //                    Console.ReadKey();
-    //                }
-    //                else
-    //                {
-    //                    flag = false;
-
-    //                    MPrima.Nome = nomeTemp;
-    //                    MPrima.UltimaCompra = DateTime.Now.Date;
-    //                    MPrima.DataCadastro = DateTime.Now.Date;
-    //                    MPrima.Situacao = sit;
-
-    //                    GravarMateriaPrima(MPrima);
-
-    //                    Console.WriteLine("\n Cadastro de Materia-prima concluido com sucesso!\n");
-    //                    Console.WriteLine("\n Pressione ENTER para voltar ao menu");
-    //                    Console.ReadKey();
-    //                }
-    //            }
-
-    //        } while (flag);
-    //    }
-
-    //    public void GravarMateriaPrima(MPrima mprima)
-    //    {
-    //        string caminhoFinal = Path.Combine(Directory.GetCurrentDirectory(), "DataBase");
-    //        Directory.CreateDirectory(caminhoFinal);
-
-    //        string arquivoFinal = Path.Combine(caminhoFinal, "Materia.dat");
-
-    //        string idMPrima = Path.Combine(caminhoFinal, "IdMPrima.dat");
-
-    //        int codAtual = 0;
-
-    //        try
-    //        {
-    //            if (!File.Exists(idMPrima))
-    //            {
-    //                using (StreamWriter sw = new StreamWriter(idMPrima))
-    //                {
-    //                    sw.WriteLine("MP0000");
-    //                }
-    //            }
-    //            else
-    //            {
-    //                string line;
-    //                using (StreamReader sr = new StreamReader(idMPrima))
-    //                {
-    //                    line = sr.ReadLine();
-    //                }
-
-    //                codAtual = int.Parse(line.Substring(2, 4));
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine(" Ex -> " + ex.Message);
-    //        }
-
-    //        codAtual++;
-    //        mprima.Id = "MP" + codAtual.ToString("0000");
-
-    //        try
-    //        {
-    //            using (StreamWriter sw = new StreamWriter(idMPrima))
-    //            {
-    //                sw.WriteLine(mprima.Id);
-    //            }
-
-    //            if (!File.Exists(arquivoFinal))
-    //            {
-    //                using (StreamWriter sw = new StreamWriter(arquivoFinal))
-    //                {
-    //                    sw.WriteLine(mprima.ToString());
-    //                }
-    //            }
-    //            else
-    //            {
-    //                using (StreamWriter sw = new StreamWriter(arquivoFinal, append: true))
-    //                {
-    //                    sw.WriteLine(mprima.ToString());
-    //                }
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            Console.WriteLine("Ex -> " + ex.Message);
-    //        }
-    //    }
-
-    //    public void Localizar()
-    //    {
-    //        string cod, mPrima;
-
-    //        Console.Clear();
-    //        Console.WriteLine("\n Localizar Materia-prima");
-    //        Console.Write("\n Digite o codigo da materia-prima: ");
-    //        cod = Console.ReadLine();
-
-    //        mPrima = Buscar(cod);
-
-    //        if (mPrima == null)
-    //        {
-    //            Console.WriteLine("\n A materia-prima nao existe.");
-    //            Console.WriteLine("\n Pressione ENTER para voltar ao menu");
-    //            Console.ReadKey();
-    //        }
-    //        else
-    //        {
-    //            string situacao = mPrima.Substring(42, 1);
-    //            if (situacao == "A")
-    //                situacao = "Ativo";
-    //            else if (situacao == "I")
-    //                situacao = "Inativo";
-
-    //            Console.WriteLine("\n A materia-prima foi encontrada.\n");
-    //            Console.WriteLine($" Codigo: {mPrima.Substring(0, 6)}");
-    //            Console.WriteLine($" Nome: {mPrima.Substring(6, 20)}");
-    //            Console.WriteLine($" Data ultima compra: {mPrima.Substring(26, 8).Insert(2, "/").Insert(5, "/")}");
-    //            Console.WriteLine($" Data do cadastro: {mPrima.Substring(34, 8).Insert(2, "/").Insert(5, "/")}");
-    //            Console.WriteLine($" Situacao: {situacao}");
-    //            Console.WriteLine("\n Pressione ENTER para voltar ao menu");
-    //            Console.ReadKey();
-    //        }
-    //    }
-
-    //    public string Buscar(string cod, bool remover = false)
-    //    {
-    //        string caminhoFinal = Path.Combine(Directory.GetCurrentDirectory(), "DataBase");
-    //        Directory.CreateDirectory(caminhoFinal);
-
-    //        string arquivoFinal = Path.Combine(caminhoFinal, "Materia.dat");
-    //        string mPrima = null;
-
-    //        if (File.Exists(arquivoFinal))
-    //        {
-    //            try
-    //            {
-    //                using (StreamReader sr = new StreamReader(arquivoFinal))
-    //                {
-    //                    string line = sr.ReadLine();
-    //                    do
-    //                    {
-    //                        if (line.Substring(0, 6) == cod)
-    //                            mPrima = line;
-
-    //                        line = sr.ReadLine();
-
-    //                    } while (line != null);
-    //                }
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                Console.WriteLine("Ex ->" + ex.Message);
-    //            }
-    //        }
-    //        return mPrima;
-    //    }
-
-    //    public void AlterarSituacao()
-    //    {
-    //        string cod, mPrima, situacao;
-    //        bool flag = true;
-
-    //        Console.Clear();
-    //        Console.WriteLine("\n Alterar Materia-prima");
-    //        Console.Write("\n Digite o codigo da materia-prima: ");
-    //        cod = Console.ReadLine();
-
-    //        mPrima = Buscar(cod);
-
-    //        if (mPrima == null)
-    //        {
-    //            Console.WriteLine("\n A materia-prima nao existe.");
-    //            Console.WriteLine("\n Pressione ENTER para voltar ao menu");
-    //            Console.ReadKey();
-    //        }
-    //        else
-    //        {
-    //            situacao = mPrima.Substring(42, 1);
-    //            if (situacao == "A")
-    //                situacao = "Ativo";
-    //            else if (situacao == "I")
-    //                situacao = "Inativo";
-
-    //            Console.WriteLine("\n A materia-prima foi encontrada.\n");
-    //            Console.WriteLine($" Codigo: {mPrima.Substring(0, 6)}");
-    //            Console.WriteLine($" Nome: {mPrima.Substring(6, 20)}");
-    //            Console.WriteLine($" Data ultima compra: {mPrima.Substring(26, 8).Insert(2, "/").Insert(5, "/")}");
-    //            Console.WriteLine($" Data do cadastro: {mPrima.Substring(34, 8).Insert(2, "/").Insert(5, "/")}");
-    //            Console.WriteLine($" Situacao: {situacao}");
-
-    //            do
-    //            {
-    //                Console.Write("\n Qual a nova situacao da materia-prima (A / I): ");
-    //                situacao = Console.ReadLine().ToUpper();
-
-    //                if ((situacao != "A") && (situacao != "I"))
-    //                {
-    //                    Console.WriteLine("\n Situacao invalida.");
-    //                    Console.WriteLine("\n Pressione ENTER para voltar ao cadastro.");
-    //                    Console.ReadKey();
-    //                }
-    //                else
-    //                {
-    //                    flag = false;
-    //                }
-
-    //            } while (flag);
-
-    //            Atualizar(cod, null, situacao);
-    //        }
-    //    }
-
-    //    public void Atualizar(string cod, string dataUltimaCompra = null, string situacaoAtualizada = null)
-    //    {
-    //        string mPrima;
-    //        mPrima = Buscar(cod);
-
-    //        if (mPrima == null)
-    //        {
-    //            Console.WriteLine("\n A materia-prima nao existe.");
-    //            Console.WriteLine("\n Pressione ENTER para voltar");
-    //            Console.ReadKey();
-    //        }
-    //        else
-    //        {
-    //            string caminhoFinal = Path.Combine(Directory.GetCurrentDirectory(), "DataBase");
-    //            Directory.CreateDirectory(caminhoFinal);
-
-    //            string arquivoFinal = Path.Combine(caminhoFinal, "Materia.dat");
-
-    //            List<string> MPrimas = new List<string>();
-    //            string novaMPrima = null;
-
-    //            if (File.Exists(arquivoFinal))
-    //            {
-    //                try
-    //                {
-    //                    using (StreamReader sr = new StreamReader(arquivoFinal))
-    //                    {
-    //                        string line = sr.ReadLine();
-    //                        do
-    //                        {
-    //                            if (line.Substring(0, 6) != cod)
-    //                                MPrimas.Add(line);
-
-    //                            line = sr.ReadLine();
-
-    //                        } while (line != null);
-    //                    }
-
-    //                    File.Delete(arquivoFinal);
-
-    //                    if (dataUltimaCompra != null)
-    //                    {
-    //                        novaMPrima = mPrima.Substring(0, 6)
-    //                            + mPrima.Substring(6, 20)
-    //                            + dataUltimaCompra.Replace("/", "")
-    //                            + mPrima.Substring(34, 8)
-    //                            + mPrima.Substring(42, 1);
-    //                    }
-    //                    else if (situacaoAtualizada != null)
-    //                    {
-    //                        novaMPrima = mPrima.Substring(0, 6)
-    //                            + mPrima.Substring(6, 20)
-    //                            + mPrima.Substring(26, 8)
-    //                            + mPrima.Substring(34, 8)
-    //                            + situacaoAtualizada;
-    //                    }
-
-    //                    using (StreamWriter sw = new StreamWriter(arquivoFinal))
-    //                    {
-    //                        MPrimas.ForEach(mprima => sw.WriteLine(mprima));
-    //                        sw.WriteLine(novaMPrima);
-    //                    }
-
-    //                    Console.WriteLine("\n Materia-prima alterada.");
-    //                    Console.WriteLine("\n Pressione ENTER para voltar ao menu");
-    //                    Console.ReadKey();
-    //                }
-    //                catch (Exception ex)
-    //                {
-    //                    Console.WriteLine("Ex ->" + ex.Message);
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    public string Impressao(MPrima mPrima)
-    //    {
-    //        string situacao = "";
-    //        if (mPrima.Situacao == 'A')
-    //            situacao = "Ativo";
-    //        else if (mPrima.Situacao == 'I')
-    //            situacao = "Inativo";
-
-    //        return "\n"
-    //            + "\n Codigo: \t" + mPrima.Id
-    //            + "\n Nome: \t" + mPrima.Nome
-    //            + "\n Ultima Venda: \t" + mPrima.UltimaCompra.ToString("dd/MM/yyyy")
-    //            + "\n Data Cadastro: " + mPrima.DataCadastro.ToString("dd/MM/yyyy")
-    //            + "\n Situacao: \t" + situacao
-    //            + "\n";
-    //    }
-
-    //    public void ImprimirMPrimas()
-    //    {
-    //        string caminhoFinal = Path.Combine(Directory.GetCurrentDirectory(), "DataBase");
-    //        Directory.CreateDirectory(caminhoFinal);
-
-    //        string arquivoFinal = Path.Combine(caminhoFinal, "Materia.dat");
-
-    //        List<MPrima> MPrimas = new List<MPrima>();
-
-    //        if (File.Exists(arquivoFinal))
-    //        {
-    //            try
-    //            {
-    //                using (StreamReader sr = new StreamReader(arquivoFinal))
-    //                {
-    //                    string line = sr.ReadLine();
-    //                    do
-    //                    {
-    //                        if (line.Substring(42, 1) != "I")
-    //                        {
-    //                            MPrimas.Add(
-    //                                new MPrima(
-    //                                    line.Substring(0, 6),
-    //                                    line.Substring(6, 20),
-    //                                    Convert.ToDateTime(line.Substring(26, 8).Insert(2, "/").Insert(5, "/")).Date,
-    //                                    Convert.ToDateTime(line.Substring(34, 8).Insert(2, "/").Insert(5, "/")).Date,
-    //                                    Convert.ToChar(line.Substring(42, 1))
-    //                                    )
-    //                                );
-    //                        }
-    //                        line = sr.ReadLine();
-
-    //                    } while (line != null);
-    //                }
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                Console.WriteLine("Ex ->" + ex.Message);
-    //            }
-
-
-    //            string escolha;
-    //            int opcao = 1, posicao = 0;
-    //            bool flag = true;
-
-    //            do
-    //            {
-    //                if ((opcao < 1) || (opcao > 5))
-    //                {
-    //                    Console.WriteLine("\n Opcao invalida.");
-    //                    Console.WriteLine("\n Pressione ENTER para voltar.");
-    //                    Console.ReadKey();
-    //                    opcao = 1;
-    //                }
-    //                else
-    //                {
-    //                    if (opcao == 5)
-    //                    {
-    //                        flag = false;
-    //                        return;
-    //                    }
-    //                    else if (opcao == 1)
-    //                    {
-    //                        Console.Clear();
-    //                        Console.WriteLine("\n Impressao de Materias-primas");
-    //                        Console.WriteLine(" --------------------------- ");
-    //                        posicao = MPrimas.IndexOf(MPrimas.First());
-    //                        Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                        Console.WriteLine(Impressao(MPrimas.First()));
-    //                    }
-    //                    else if (opcao == 4)
-    //                    {
-    //                        Console.Clear();
-    //                        Console.WriteLine("\n Impressao de Materias-primas");
-    //                        Console.WriteLine(" --------------------------- ");
-    //                        posicao = MPrimas.IndexOf(MPrimas.Last());
-    //                        Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                        Console.WriteLine(Impressao(MPrimas.Last()));
-    //                    }
-    //                    else if (opcao == 2)
-    //                    {
-    //                        if (posicao == 0)
-    //                        {
-    //                            Console.Clear();
-    //                            Console.WriteLine("\n Impressao de Materias-primas");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            Console.WriteLine("\n Nao ha materia-prima anterior.\n");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            posicao = MPrimas.IndexOf(MPrimas.First());
-    //                            Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                            Console.WriteLine(Impressao(MPrimas.First()));
-    //                        }
-    //                        else
-    //                        {
-    //                            Console.Clear();
-    //                            Console.WriteLine("\n Impressao de Materias-primas");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            posicao--;
-    //                            Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                            Console.WriteLine(Impressao(MPrimas[posicao]));
-    //                            posicao = MPrimas.IndexOf(MPrimas[posicao]);
-    //                        }
-    //                    }
-    //                    else if (opcao == 3)
-    //                    {
-    //                        if (posicao == MPrimas.IndexOf(MPrimas.Last()))
-    //                        {
-    //                            Console.Clear();
-    //                            Console.WriteLine("\n Impressao de Materias-primas");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            Console.WriteLine("\n Nao ha proxima materia-prima.\n");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                            Console.WriteLine(Impressao(MPrimas.Last()));
-    //                            posicao = MPrimas.IndexOf(MPrimas.Last());
-    //                        }
-    //                        else
-    //                        {
-    //                            Console.Clear();
-    //                            Console.WriteLine("\n Impressao de Materias-primas");
-    //                            Console.WriteLine(" --------------------------- ");
-    //                            posicao++;
-    //                            Console.WriteLine($"\n Materia-prima {posicao + 1}");
-    //                            Console.WriteLine(Impressao(MPrimas[posicao]));
-    //                            posicao = MPrimas.IndexOf(MPrimas[posicao]);
-    //                        }
-    //                    }
-
-    //                    Console.WriteLine(" ------------------------------------------------------------------ ");
-    //                    Console.WriteLine("\n Navegacao\n");
-    //                    Console.WriteLine(" 1 - Primeira / 2 - Anterior / 3 - Proxima / 4 - Ultima / 5 - Sair");
-    //                    Console.Write("\n Escolha: ");
-    //                    escolha = Console.ReadLine();
-    //                    int.TryParse(escolha, out opcao);
-    //                }
-
-    //            } while (flag);
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("\n Nao ha materias-primas cadastradas\n");
-    //            Console.WriteLine("\n Pressione ENTER para voltar");
-    //            Console.ReadKey();
-    //        }
-    //    }
-
-    //    public MPrima RetornaMateriaPrima(string cod)
-    //    {
-    //        string caminhoFinal = Path.Combine(Directory.GetCurrentDirectory(), "DataBase");
-    //        Directory.CreateDirectory(caminhoFinal);
-
-    //        string arquivoFinal = Path.Combine(caminhoFinal, "Materia.dat");
-
-    //        MPrima MPrima = null;
-
-    //        if (File.Exists(arquivoFinal))
-    //        {
-    //            try
-    //            {
-    //                using (StreamReader sr = new StreamReader(arquivoFinal))
-    //                {
-    //                    string line = sr.ReadLine();
-    //                    do
-    //                    {
-    //                        if (line.Substring(0, 6) == cod)
-    //                            MPrima =
-    //                                new MPrima(
-    //                                    line.Substring(0, 6),
-    //                                    line.Substring(6, 20),
-    //                                    Convert.ToDateTime(line.Substring(26, 8).Insert(2, "/").Insert(5, "/")).Date,
-    //                                    Convert.ToDateTime(line.Substring(34, 8).Insert(2, "/").Insert(5, "/")).Date,
-    //                                    Convert.ToChar(line.Substring(42, 1))
-    //                                    );
-
-    //                        line = sr.ReadLine();
-    //                    } while (line != null);
-    //                }
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                Console.WriteLine("Ex ->" + ex.Message);
-    //            }
-    //        }
-    //        return MPrima;
-    //    }
-    //}
 
     //public class Produto
     //{

@@ -10,7 +10,7 @@ namespace Biltiful_2._0
 
 
 
-            
+
 
             string escolha;
 
@@ -46,23 +46,23 @@ namespace Biltiful_2._0
                         break;
 
                     case "3":
-                       // new Produto().Menu();
+                       
                         break;
 
                     case "4":
-                        //new MPrima().Menu();
+                        MenuCadastros.SubMenuMateriaPrima();
                         break;
 
                     case "5":
-                       // new Producao().SubMenu();
+                      
                         break;
 
                     case "6":
-                       // Compra.SubMenu();
+                     
                         break;
 
                     case "7":
-                       // MenuVendas.SubMenu();
+                        
                         break;
 
                     default:
