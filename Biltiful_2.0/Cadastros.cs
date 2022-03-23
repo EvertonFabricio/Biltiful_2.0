@@ -251,17 +251,18 @@ namespace Biltiful_2._0
                         break;
 
                     case "5":
-                        // new Cliente().Localizar();
+                        LocalizaCliente();
                         break;
 
                     case "6":
-                        // new Cliente().ClientesBloqueados();
+                        LocalizaClienteBloqueado();
                         break;
 
                     default:
                         Console.Clear();
                         Console.WriteLine("Opção inválida");
                         Console.WriteLine("\n Pressione ENTER para voltar ao menu");
+                        Console.ReadKey();
                         break;
                 }
 
@@ -393,102 +394,180 @@ namespace Biltiful_2._0
 
             Console.Clear();
             Console.WriteLine("Informe qual dado deseja alterar do cliente:");
-            Console.WriteLine("1. Nome\n2. Data de Nascimento\n3.Sexo");
+            Console.WriteLine("1. Nome\n2. Data de Nascimento\n3. Sexo");
 
             var escolha = Console.ReadLine();
-
-            Cliente cliente = new Cliente();
-            var novoNome = cliente.Nome;
-            var novaData = cliente.DataNascimento;
-            var novoSexo = cliente.Sexo;
-
-            do
-            {
-
-
-                switch (escolha)
-                {
-                    case "1":
-                        Console.WriteLine("Digite o Nome para alterar");
-                        novoNome = Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
-                        Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3.Sexo\n0. Finalizar Alterações");
-                        escolha = Console.ReadLine();
-                        break;
-
-                    case "2":
-                        Console.WriteLine("Digite a data de Nascimento para alterar");
-                        novaData = DateTime.Parse(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
-                        Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3.Sexo\n0. Finalizar Alterações");
-                        escolha = Console.ReadLine();
-                        break;
-
-                    case "3":
-                        Console.WriteLine("Digite o sexo para alterar (M - Masculino ou F - Feminino)");
-                        novoSexo = char.Parse(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
-                        Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3.Sexo\n0. Finalizar Alterações");
-                        escolha = Console.ReadLine();
-                        break;
-
-                    case "0":
-                        break;
-
-                    default:
-                        Console.WriteLine("Opção incorreta. Tente novamente.");
-                        break;
-                }
-
-            } while (escolha != "0");
+            string novoNome;
+            DateTime novaData;
+            char novoSexo;
 
             try
             {
                 var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
                 SqlConnection cnn = new SqlConnection(connetionString);
+                SqlCommand sql_cmnd;
                 using (cnn)
                 {
+                    do
+                    {
 
-                    cnn.Open();
-                 
-                    SqlCommand sql_cmnd = new SqlCommand("EditaCliente", cnn);
+                        switch (escolha)
+                        {
+                            case "1":
+                                Console.WriteLine("Digite o Nome para alterar");
+                                novoNome = Console.ReadLine();
+                                Console.Clear();
 
-                    sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                cnn.Open();
+                                sql_cmnd = new SqlCommand("EditaNomeCliente", cnn);
+                                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                sql_cmnd.Parameters.AddWithValue("@CPF", SqlDbType.VarChar).Value = cpf;
+                                sql_cmnd.Parameters.AddWithValue("@Nome", SqlDbType.VarChar).Value = novoNome;
+                                sql_cmnd.ExecuteNonQuery();
+                                cnn.Close();
 
-                    sql_cmnd.Parameters.AddWithValue("@CPF", SqlDbType.VarChar).Value = cpf;
-                    sql_cmnd.Parameters.AddWithValue("@Nome", SqlDbType.VarChar).Value = novoNome;
-                    sql_cmnd.Parameters.AddWithValue("@DataNasc", SqlDbType.Date).Value = novaData;
-                    sql_cmnd.Parameters.AddWithValue("@sexo", SqlDbType.Char).Value = novoSexo;
-               
-                    sql_cmnd.ExecuteNonQuery();
-                    cnn.Close();
-                    Console.WriteLine("Dados do cliente alterados com sucesso.\nPressione ENTER para voltar ao menu...");
-                    Console.ReadKey();
+                                Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
+                                Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3. Sexo\n0. Finalizar Alterações");
+                                escolha = Console.ReadLine();
+                                break;
 
+                            case "2":
+                                Console.WriteLine("Digite a data de Nascimento para alterar");
+                                novaData = DateTime.Parse(Console.ReadLine());
+                                Console.Clear();
+
+                                cnn.Open();
+                                sql_cmnd = new SqlCommand("EditaDataNascCliente", cnn);
+                                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                sql_cmnd.Parameters.AddWithValue("@CPF", SqlDbType.VarChar).Value = cpf;
+                                sql_cmnd.Parameters.AddWithValue("@DataNasc", SqlDbType.Date).Value = novaData;
+                                sql_cmnd.ExecuteNonQuery();
+                                cnn.Close();
+
+                                Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
+                                Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3. Sexo\n0. Finalizar Alterações");
+                                escolha = Console.ReadLine();
+                                break;
+
+                            case "3":
+                                Console.WriteLine("Digite para qual sexo deseja alterar (M - Masculino ou F - Feminino)");
+                                novoSexo = char.Parse(Console.ReadLine().ToUpper());
+                                Console.Clear();
+
+                                cnn.Open();
+                                sql_cmnd = new SqlCommand("EditaSexoCliente", cnn);
+                                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                sql_cmnd.Parameters.AddWithValue("@CPF", SqlDbType.VarChar).Value = cpf;
+                                sql_cmnd.Parameters.AddWithValue("@sexo", SqlDbType.Char).Value = novoSexo;
+                                sql_cmnd.ExecuteNonQuery();
+                                cnn.Close();
+
+
+                                Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
+                                Console.WriteLine("\n1. Nome\n2. Data de Nascimento\n3. Sexo\n0. Finalizar Alterações");
+                                escolha = Console.ReadLine();
+                                break;
+
+                            case "0":
+                                break;
+
+                            default:
+                                Console.WriteLine("Opção incorreta. Tente novamente.");
+                                break;
+                        }
+
+                    } while (escolha != "0");
                 }
+                Console.WriteLine("Dados do cliente alterados com sucesso.\nPressione ENTER para voltar ao menu...");
+                Console.ReadKey();
             }
             catch (SqlException erro)
             {
                 Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
                 Console.ReadKey();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
+        public static void LocalizaCliente()
+        {
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            Console.WriteLine("Digite o nome OU o CPF do cliente que deseja buscar:");
+            var Busca = Console.ReadLine();
+
+            string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Cliente encontrado: \n");
+                            Console.WriteLine($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                            Console.WriteLine("Pressione ENTER para continuar...");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            cnn.Close();
+        }
+        public static void LocalizaClienteBloqueado()
+        {
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            Console.WriteLine("Digite o nome OU o CPF do cliente que deseja saber a situação:");
+            var Busca = Console.ReadLine();
+
+            string Select = $"SELECT Nome, CPF, Situacao FROM dbo.Cliente WHERE Nome like '%{Busca}%' OR CPF like '%{Busca}%'";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            Console.Clear();
+                            if (Ler.GetString(2) == "I")
+                            {
+                                Console.Clear();
+                                Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se BLOQUEADO\nPressione ENTER para voltar...");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine($"O cliente {Ler.GetString(0)} encontra-se DESBLOQUEADO\nPressione ENTER para voltar...");
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"{Busca}\nCliente não encontrado. Pressione ENTER para voltar...");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            cnn.Close();
+        }
+
+
+
 
 
         public class Fornecedor
@@ -727,7 +806,7 @@ namespace Biltiful_2._0
                         break;
 
                     case "3":
-                        // new Fornecedor().Editar();
+                        EditarFornecedor();
                         break;
 
                     case "4":
@@ -735,11 +814,11 @@ namespace Biltiful_2._0
                         break;
 
                     case "5":
-                        // new Fornecedor().Localizar();
+                        LocalizaFornecedor();
                         break;
 
                     case "6":
-                        // new Fornecedor().FornecedorBloqueado();
+                        LocalizaFornecedorBloqueado();
                         break;
 
                     default:
@@ -824,7 +903,7 @@ namespace Biltiful_2._0
 
             Console.WriteLine("Insira o CNPJ para bloqueio: ");
             string cnpj = Console.ReadLine();
-            cnpj = cnpj.Replace(".", "").Replace("-", "");
+            cnpj = cnpj.Replace(".", "").Replace("/", "").Replace("-", "");
             Console.Write("Informe a situação do fornecedor (A - Ativo/ I - Inativo): ");
             char situacao = char.Parse(Console.ReadLine().ToUpper());
             try
@@ -858,6 +937,164 @@ namespace Biltiful_2._0
 
 
 
+        }
+        public static void EditarFornecedor()
+        {
+            Console.WriteLine("Informe o CNPJ do Fornecedor que deseja alterar:");
+            var cnpj = Console.ReadLine().Replace(".", "").Replace("/", "").Replace("-", "");
+
+            Console.Clear();
+            Console.WriteLine("Informe qual dado deseja alterar do Fornecedor:");
+            Console.WriteLine("1. Razão Social\n2. Data de Abertura");
+
+            var escolha = Console.ReadLine();
+            string novaRSocial;
+            DateTime novaData;
+
+
+            try
+            {
+                var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+                SqlConnection cnn = new SqlConnection(connetionString);
+                SqlCommand sql_cmnd;
+                using (cnn)
+                {
+                    do
+                    {
+
+                        switch (escolha)
+                        {
+                            case "1":
+                                Console.WriteLine("Digite a Razão Social para alterar");
+                                novaRSocial = Console.ReadLine();
+                                Console.Clear();
+
+                                cnn.Open();
+                                sql_cmnd = new SqlCommand("EditaRazaoSocial", cnn);
+                                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                sql_cmnd.Parameters.AddWithValue("@CNPJ", SqlDbType.VarChar).Value = cnpj;
+                                sql_cmnd.Parameters.AddWithValue("@RazaoSocial", SqlDbType.VarChar).Value = novaRSocial;
+                                sql_cmnd.ExecuteNonQuery();
+                                cnn.Close();
+
+                                Console.WriteLine("Deseja alterar mais alguma informação do Cliente?:");
+                                Console.WriteLine("\n1. Razão Social\n2. Data de Abertura\n0. Finalizar Alterações");
+                                escolha = Console.ReadLine();
+                                break;
+
+                            case "2":
+                                Console.WriteLine("Digite a Data de Abertura para alterar");
+                                novaData = DateTime.Parse(Console.ReadLine());
+                                Console.Clear();
+
+                                cnn.Open();
+                                sql_cmnd = new SqlCommand("EditaDataAbertura", cnn);
+                                sql_cmnd.CommandType = CommandType.StoredProcedure;
+                                sql_cmnd.Parameters.AddWithValue("@CNPJ", SqlDbType.VarChar).Value = cnpj;
+                                sql_cmnd.Parameters.AddWithValue("@DataAbertura", SqlDbType.Date).Value = novaData;
+                                sql_cmnd.ExecuteNonQuery();
+                                cnn.Close();
+
+                                Console.WriteLine("Deseja alterar mais alguma informação do Fornecedor?:");
+                                Console.WriteLine("\n1. Razão Social\n2. Data de Abertura\n0. Finalizar Alterações");
+                                escolha = Console.ReadLine();
+                                break;
+
+                            case "0":
+                                break;
+
+                            default:
+                                Console.WriteLine("Opção incorreta. Tente novamente.");
+                                break;
+                        }
+
+                    } while (escolha != "0");
+                }
+                Console.WriteLine("Dados do Fornecedor alterados com sucesso.\nPressione ENTER para voltar ao menu...");
+                Console.ReadKey();
+            }
+            catch (SqlException erro)
+            {
+                Console.WriteLine("Erro ao se conectar no banco de dados \n" + erro);
+                Console.ReadKey();
+            }
+        }
+        public static void LocalizaFornecedor()
+        {
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja buscar:");
+            var Busca = Console.ReadLine();
+
+            string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Empresa encontrado: \n");
+                            Console.WriteLine($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
+                            Console.WriteLine("Pressione ENTER para continuar...");
+                            Console.ReadKey();
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            cnn.Close();
+        }
+        public static void LocalizaFornecedorBloqueado()
+        {
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            Console.WriteLine("Digite A Razão Social OU o CNPJ do cliente que deseja saber a situação:");
+            var Busca = Console.ReadLine();
+
+            string Select = $"Select RazaoSocial, CNPJ, Situacao From dbo.Fornecedor WHERE RazaoSocial like '%{Busca}%' OR CNPJ like '%{Busca}%'";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            if (Ler.GetString(2) == "I")
+                            {
+                                Console.Clear();
+                                Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se BLOQUEADA.\nPressione ENTER para voltar...");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine($"Empresa {Ler.GetString(0)} encontra-se DESBLOQUEADA.\nPressione ENTER para voltar...");
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"{Busca}\nRegistro não encontrado. Pressione ENTER para voltar...");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            cnn.Close();
         }
     }
 

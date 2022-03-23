@@ -28,140 +28,6 @@ using System.Threading.Tasks;
 //            ValorTotal = vTotal;
 //        }
 
-//        public void Cadastrar()
-//        {
-//            // Salvar no arquivo
-//            new ManipulaArquivosCompraMP().Salvar(this);
-//            Console.WriteLine($"Compra de codigo {Id} cadastrada!");
-//            Console.ReadKey();
-//        }
-
-//        public static Compra Localizar(int id) => new ManipulaArquivosCompraMP().Procura(id);
-
-//        public static void ImpressaoPorRegistro(List<Compra> compras)
-//        {
-//            string opt;
-//            if (compras.Count == 0)
-//            {
-//                Console.Clear();
-//                Console.WriteLine("Nada para mostrar: arquivo vazio!!");
-//                return;
-//            }
-//            else
-//            {
-//                do
-//                {
-//                    Console.Clear();
-//                    Console.WriteLine("1. Ver Compra");
-//                    //Console.WriteLine("2. Ver Itens da Compra");
-//                    Console.WriteLine("0. Voltar para o menu");
-//                    opt = Console.ReadLine();
-//                    switch (opt)
-//                    {
-//                        case "1":
-//                            string escolha = "<<";
-//                            int atual = 0;
-//                            do
-//                            {
-//                                Console.Clear();
-//                                Console.WriteLine("|         VISUALIZAÇAO DAS COMPRAS       |");
-//                                if (escolha.Equals("<<"))
-//                                {
-//                                    atual = 0;
-//                                    compras.ElementAt(atual).ImprimirCompra();
-//                                }
-//                                else if (escolha.Equals("<") && atual > 0)
-//                                {
-//                                    if (atual != 0)
-//                                        atual--;
-
-//                                    compras.ElementAt(atual).ImprimirCompra();
-//                                }
-//                                else if (escolha.Equals(">") && atual < compras.Count - 1)
-//                                {
-//                                    if (atual != compras.Count - 1)
-//                                        ++atual;
-
-//                                    compras.ElementAt(atual).ImprimirCompra();
-//                                }
-//                                else if (escolha.Equals(">>"))
-//                                {
-//                                    atual = compras.Count - 1;
-//                                    compras.ElementAt(atual).ImprimirCompra();
-//                                }
-//                                Console.Write(" (<<) Primeiro (<) Anterior (>) Proximo (>>) Ultimo ");
-//                                Console.WriteLine(@" ""x"" => Sair                           ");
-//                                Console.Write("Navegar: ");
-//                                escolha = Console.ReadLine();
-//                            } while (escolha != "x");
-//                            break;
-
-//                        //case "2":
-//                        //    Console.Clear();
-//                        //    bool sair = false;
-//                        //    int indice = 0;
-//                        //    string[] dados = File.ReadAllLines(new ManipulaArquivosCompraMP().CaminhoItemCompra);
-//                        //    if (dados.Length == 0)
-//                        //    {
-//                        //        Console.WriteLine("Nada pra mostrar: arquivo vazio!!");
-//                        //        Console.ReadKey();
-//                        //    }
-//                        //    while (!sair)
-//                        //    {
-//                        //        Console.Clear();
-//                        //        Console.WriteLine("1 - Inicio\n2 - Fim\n3 - Anterior\n4 - Proximo\n5 - Sair");
-//                        //        Console.WriteLine("Escolha a opção que deseja: ");
-//                        //        int opcao = int.Parse(Console.ReadLine());
-//                        //        switch (opcao)
-//                        //        {
-//                        //            case 1:
-//                        //                indice = 0;
-//                        //                Console.WriteLine(dados[indice]);
-//                        //                break;
-//                        //            case 2:
-//                        //                indice = dados.Length - 1;
-//                        //                Console.WriteLine(dados[indice]);
-//                        //                break;
-//                        //            case 3:
-//                        //                if (indice == 0)
-//                        //                {
-//                        //                    break;
-//                        //                }
-//                        //                else
-//                        //                {
-//                        //                    indice--;
-//                        //                    Console.WriteLine(dados[indice]);
-//                        //                }
-//                        //                break;
-//                        //            case 4:
-//                        //                if (indice == dados.Length - 1)
-//                        //                {
-//                        //                    break;
-//                        //                }
-//                        //                else
-//                        //                {
-//                        //                    indice++;
-//                        //                    Console.WriteLine(dados[indice]);
-//                        //                }
-//                        //                break;
-//                        //            case 5:
-//                        //                sair = true;
-//                        //                break;
-//                        //        }
-//                        //    }
-//                        //    break;
-
-//                        case "0":
-//                            break;
-
-//                        default:
-//                            Console.WriteLine("Digite 1 para Ver as compras e 2 para ver os Itens da Compra");
-//                            break;
-//                    }
-//                } while (opt != "0");
-//            }
-//        }
-
 //        public static void SubMenu()
 //        {
 //            new ManipulaArquivosCompraMP();
@@ -184,33 +50,18 @@ using System.Threading.Tasks;
 //                {
 //                    // ---------- CADASTRAR COMPRA -----------
 //                    case 1:
-//                        if (new Read().VerificaListaFornecedor())
-//                            CadastraNovaCompra();
-//                        else
-//                        {
-//                            Console.WriteLine("Para realizar uma compra de materias primas devera ter o registro de ao menos um fornecedor.");
-//                            Console.ReadKey();
-//                        }
+//                        CadastraNovaCompra();
 //                        break;
 
 //                    // ---------- LOCALIZAR COMPRA -----------
 //                    case 2:
-//                        Console.WriteLine("\nLocalizar Compra\n");
-//                        int okl;
-//                        int id;
-//                        do
-//                        {
-//                            Console.Write("Id da Compra: ");
-//                            id = int.Parse(Console.ReadLine());
-//                            okl = (id > 0 && id < 99999) && Compra.Localizar(id) != null ? 0 : 1;
-//                        } while (okl != 0);
-//                        if (okl == 2) break;
-//                        Compra.Localizar(id).ImprimirCompra();
+//                       break;
+                       
 //                        break;
 
 //                    // ---------- IMPRESSÃO POR REGISTRO -----------
 //                    case 3:
-//                        ImpressaoPorRegistro(new ManipulaArquivosCompraMP().PegarTodasAsCompras());
+                       
 //                        break;
 //                }
 //                Console.ReadKey();
@@ -221,21 +72,17 @@ using System.Threading.Tasks;
 //        private static void CadastraNovaCompra()
 //        {
 //            Compra compra = new();
-//            int ok;
 //            string cnpjFornecedor;
-//            do
-//            {
+           
 //                Console.Write("CNPJ do Fornecedor: ");
 //                cnpjFornecedor = Console.ReadLine();
-
 //                cnpjFornecedor = cnpjFornecedor.Replace(".", "").Replace("/", "").Replace("-", "");
 
-//                ok = cnpjFornecedor != string.Empty &&
-//                     Validacoes.ValidarCnpj(cnpjFornecedor) &&
-//                     new Read().ProcurarFornecedor(cnpjFornecedor) != null ? 0 : 1;
-//                if (ok != 0) Console.WriteLine("CNPJ invalido ou não encontrado na base de dados, digite novamente!");
-//            } while (ok != 0);
-//            cnpjFornecedor = new Read().ProcurarFornecedor(cnpjFornecedor).CNPJ;
+               
+                    
+               
+           
+            
 
 //            int count = 1;
 //            List<ItemCompra> itens = new();
@@ -278,7 +125,7 @@ using System.Threading.Tasks;
 //            compra.Fornecedor = cnpjFornecedor;
 //            itens.ForEach(item => compra.ValorTotal += item.TotalItem);
 //            ItemCompra.Cadastrar(itens);
-//            compra.Cadastrar();
+           
 //        }
 
 //        public void ImprimirCompra()
