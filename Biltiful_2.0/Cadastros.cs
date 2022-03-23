@@ -238,7 +238,7 @@ namespace Biltiful_2._0
                         break;
 
                     case "2":
-                        // new Cliente().Navegar();
+                        ListarClientes();
                         break;
 
                     case "3":
@@ -329,7 +329,7 @@ namespace Biltiful_2._0
                         sql_cmnd.ExecuteNonQuery();
                         cnn.Close();
                         Console.WriteLine("Cliente incluido no banco de dados.");
-
+                        Console.ReadKey();
 
                     }
                 }
@@ -345,6 +345,77 @@ namespace Biltiful_2._0
             {
                 Console.WriteLine("Menor de 18 anos nao pode ser cadastrado. Presione ENTER para voltar ao menu...");
                 Console.ReadKey();
+            }
+        }
+        public static void ListarClientes()
+        {
+            List<string> list = new List<string>();
+
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            string Select = $"SELECT Nome, CPF, format(DataNasc,'dd/MM/yyyy'), sexo, Situacao FROM dbo.Cliente";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            list.Add($"Nome: {Ler.GetString(0)}\nCPF: {Ler.GetString(1)}\nData de Nascimento: {Ler.GetString(2)}\nSexo:{Ler.GetString(3)}\nSituação: {Ler.GetString(4)}\n");
+                        }
+                        cnn.Close();
+                        list.Sort();
+                        int i = 0;
+                        string opcao;
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine(list[i]);
+                            Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
+                            opcao = Console.ReadLine();
+                            switch (opcao)
+                            {
+                                case "1":
+                                    if (i == list.Count() - 1)
+                                        i = list.Count() - 1;
+                                    else
+                                        i++;
+                                    break;
+
+                                case "2":
+                                    if (i == 0)
+                                        i = 0;
+                                    else
+                                        i--;
+                                    break;
+
+                                case "3":
+                                    i = 0;
+                                    break;
+
+                                case "4":
+                                    i = list.Count() - 1;
+                                    break;
+
+                                case "0":
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        while (opcao != "0");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Não existem clientes cadastrados.");
+                        Console.ReadKey();
+                    }
+                }
             }
         }
         public static void BloqueiaCliente()
@@ -565,9 +636,7 @@ namespace Biltiful_2._0
             }
             cnn.Close();
         }
-
-
-
+       
 
 
         public class Fornecedor
@@ -802,7 +871,7 @@ namespace Biltiful_2._0
                         break;
 
                     case "2":
-                        //new Fornecedor().Navegar();
+                        ListarFornecedores();
                         break;
 
                     case "3":
@@ -882,6 +951,7 @@ namespace Biltiful_2._0
                         sql_cmnd.ExecuteNonQuery();
                         cnn.Close();
                         Console.WriteLine("Fornecedor incluido no banco de dados.");
+                        Console.ReadKey();
                     }
                 }
                 catch (SqlException erro)
@@ -896,6 +966,77 @@ namespace Biltiful_2._0
             {
                 Console.WriteLine("Empresa com menos de 6 meses nao pode ser cadastrada. Pressione ENTER para voltar ao menu...");
                 Console.ReadKey();
+            }
+        }
+        public static void ListarFornecedores()
+        {
+            List<string> list = new List<string>();
+
+            var connetionString = @"Data Source=Everton;Initial Catalog=Biltiful;User ID=sa;Password=007410";
+            SqlConnection cnn = new SqlConnection(connetionString);
+            cnn.Open();
+
+            string Select = $"Select RazaoSocial, CNPJ, Format(DataAbertura,'dd/MM/yyyy'), Situacao From dbo.Fornecedor";
+            using (SqlCommand comando = new SqlCommand(Select, cnn))
+            {
+                using (SqlDataReader Ler = comando.ExecuteReader())
+                {
+                    if (Ler.HasRows == true)
+                    {
+                        while (Ler.Read())
+                        {
+                            list.Add($"Razão Social: {Ler.GetString(0)}\nCNPJ: {Ler.GetString(1)}\nData de Abertura: {Ler.GetString(2)}\nSituação: {Ler.GetString(3)}\n");
+                        }
+                        cnn.Close();
+                        list.Sort();
+                        int i = 0;
+                        string opcao;
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine(list[i]);
+                            Console.WriteLine("\n\n1 - Proximo\t2 - Anterior\t3 - Primeiro\t4 - Ultimo\t0 - Sair");
+                            opcao = Console.ReadLine();
+                            switch (opcao)
+                            {
+                                case "1":
+                                    if (i == list.Count() - 1)
+                                        i = list.Count() - 1;
+                                    else
+                                        i++;
+                                    break;
+
+                                case "2":
+                                    if (i == 0)
+                                        i = 0;
+                                    else
+                                        i--;
+                                    break;
+
+                                case "3":
+                                    i = 0;
+                                    break;
+
+                                case "4":
+                                    i = list.Count() - 1;
+                                    break;
+
+                                case "0":
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        while (opcao != "0");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Não existem Fornecedores cadastrados.");
+                        Console.ReadKey();
+                    }
+                }
             }
         }
         public static void BloqueiaFornecedor()
